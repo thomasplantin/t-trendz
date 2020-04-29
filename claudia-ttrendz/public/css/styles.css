@@ -1,6 +1,11 @@
-body {
+html, body {
   font-family: "Montserrat";
   text-align: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -10,12 +15,34 @@ h1, h2, h3, h4, h5, h6 {
 p {
   color: #8F8F8F;
   font-size: 1.3rem;
+  margin: 0;
+}
+
+a {
+  color: #8F8F8F;
 }
 
 a:hover
 {
     text-decoration:none;
     color:inherit;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  /* padding: 0 4px; */
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  /* flex: 50%; */
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
 }
 
 /* Headings Section */
@@ -36,11 +63,16 @@ a:hover
 /* Containers */
 
 .container-fluid {
-  padding: 7% 15%;
+  padding: 0 15%;
 }
 
 /* Sections */
 .colored-section {
+  background-color: #ffe8df;
+  color: #222831;
+}
+
+.colored-section-center {
   background-color: #faf4f4;
   color: #222831;
 }
@@ -52,9 +84,10 @@ a:hover
 
 /* Title & Navigation Bar */
 
-.title-position {
-  width: 100%;
-  text-align: center;
+.title-slogan {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  background-color: #faf4f4;
 }
 
 .title-style {
@@ -64,8 +97,9 @@ a:hover
   color: #222831;
 }
 
-.navbar {
-  padding: auto 0;
+.my-navbar {
+  width: 100%;
+  padding: 0;
 }
 
 .nav-item {
@@ -77,111 +111,21 @@ a:hover
   font-weight: lighter;
 }
 
-/* Title Section */
-
-#title {
-  text-align: center;
+.hamburger {
+  margin-left: 3%;
 }
 
-.slogan {
-  margin: auto;
-}
+/* Main Section */
 
-#title .container-fluid {
-  padding: 3% 15% 7%;
-}
-
-  #title {
-    text-align: center;
-  }
-}
-
-/* Features Section */
-
-#features {
-  position: relative;
-}
-
-.feature-three {
-  padding: 5%;
-}
-
-.fas-three {
-  color: #EF8172;
-  font-size: 400%;
-  margin-bottom: 1rem;
-}
-
-.fas-three:hover {
-  color: #FF4C68;
-}
-
-.feature-title {
-  font-size: 1.5rem;
-}
-
-/* Testimonials Section */
-
-#testimonials {
-  background-color: #EF8172;
-}
-
-.testimonial-image {
-  width: 10%;
-  border-radius: 100%;
-  margin: 20px;
-}
-
-.testimonial-text {
-  font-size: 3rem;
-  line-height: 1.5;
-}
-
-/* Press Section */
-
-#press {
-  padding-bottom: 3%;
-  background-color: #EF8172;
-}
-
-.press-logo {
-  width: 15%;
-  margin: 20px 20px 50px 20px;
-}
-
-/* Pricing Secion */
-
-#pricing {
-  padding:100px;
-}
-
-.pricing-column {
-  padding: 3% 2%;
-}
-
-.price-text {
-  font-size: 3rem;
-  line-height: 1.5;
-}
-
-.dog-race {
-  font-weight: 900;
-}
-
-/* CTA Secion */
-
-#cta .container-fluid {
-  padding: 4% 15%;
-}
-
-.download-button-cta {
-  margin: 2% 3% 1%;
+.image-size {
+  width: 350px;
+  height: 400px;
 }
 
 /* Footer Section */
 
-#footer .container-fluid {
-  padding: 7% 15% 1%;
+.container-fluid-footer {
+  padding: 4% 15% 1%;
 }
 
 .table-bottom {
