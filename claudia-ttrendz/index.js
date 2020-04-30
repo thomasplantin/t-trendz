@@ -11,9 +11,7 @@ const PORT = 8080;
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Import private vars from JSON
-let config = require('./private/config.json');
-
-console.log(config.credentials.GOOGLE_DB_IP);
+const config = require('./private/config.json');
 
 app.get('/', (req, res) => {
   // Returns the root page of the 
