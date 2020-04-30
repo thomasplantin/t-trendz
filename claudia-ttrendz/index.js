@@ -13,6 +13,13 @@ app.use(express.static(path.join(__dirname, '/public')));
 // Import private vars from JSON
 const config = require('./private/config.json');
 
+const myDB = mysql.createConnection( {
+  host: config.credentials.GOOGLE_DB_IP,
+  user: config.credentials.GOOGLE_DB_USER,
+  password: config.credentials.GOOGLE_DB_PASS,
+  database: config.credentials.GOOGLE_DB_NAME
+});
+
 app.get('/', (req, res) => {
   // Returns the root page of the 
   res.sendFile('index.html');
@@ -26,15 +33,8 @@ app.get('/products/:category', (req, res) => {
   const productCategory = req.params.category;
   console.log('Fetching products from category: ' + productCategory);
 
-  const connection = mysql.createConnection( {
-    host: config.credentials.GOOGLE_DB_IP,
-    user: config.credentials.GOOGLE_DB_USER,
-    password: config.credentials.GOOGLE_DB_PASS,
-    database: config.credentials.GOOGLE_DB_NAME
-  });
-
   const queryString = 'SELECT * FROM products WHERE category = ?';
-  connection.query(queryString, [productCategory], (err, rows, fields) => {
+  myDB.query(queryString, [productCategory], (err, rows, fields) => {
     if(err) {
       console.log('Failed to query product - ERROR: ' + err);
       res.sendStatus(500);
