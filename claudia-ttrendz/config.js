@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 module.exports = {
+  PORT: process.env.PORT,
   GOOGLE_DB_HOST: process.env.GOOGLE_DB_IP,
   GOOGLE_DB_USER: process.env.GOOGLE_DB_USER,
   GOOGLE_DB_PASS: process.env.GOOGLE_DB_PASS,

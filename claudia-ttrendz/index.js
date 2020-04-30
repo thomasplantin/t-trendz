@@ -4,7 +4,9 @@ const app = express();
 const morgan = require('morgan');
 const mysql = require('mysql');
 
+// Import constants from config.js
 const {
+  PORT,
   GOOGLE_DB_HOST,
   GOOGLE_DB_USER,
   GOOGLE_DB_PASS,
@@ -12,9 +14,6 @@ const {
 } = require('./config.js');
 
 app.use(morgan('tiny'));
-
-const PORT = process.env.PORT;
-
 app.use(express.static(path.join(__dirname, '/public')));
 
 const myDB = mysql.createConnection( {
