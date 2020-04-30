@@ -4,20 +4,24 @@ const app = express();
 const morgan = require('morgan');
 const mysql = require('mysql');
 
+const {
+  GOOGLE_DB_HOST,
+  GOOGLE_DB_USER,
+  GOOGLE_DB_PASS,
+  GOOGLE_DB_NAME
+} = require('./config.js');
+
 app.use(morgan('tiny'));
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-// Import private vars from JSON
-const config = require('./private/config.json');
-
 const myDB = mysql.createConnection( {
-  host: config.credentials.GOOGLE_DB_IP,
-  user: config.credentials.GOOGLE_DB_USER,
-  password: config.credentials.GOOGLE_DB_PASS,
-  database: config.credentials.GOOGLE_DB_NAME
+  host: GOOGLE_DB_HOST,
+  user: GOOGLE_DB_USER,
+  password: GOOGLE_DB_PASS,
+  database: GOOGLE_DB_NAME
 });
 
 app.get('/', (req, res) => {
