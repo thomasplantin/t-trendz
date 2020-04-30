@@ -11,7 +11,7 @@ const PORT = 8080;
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
-  // Returns the root page of the website.
+  // Returns the root page of the 
   res.sendFile('index.html');
 });
 
