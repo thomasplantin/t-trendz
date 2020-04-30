@@ -4,11 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const mysql = require('mysql');
 
-<<<<<<< HEAD
 app.use(morgan('tiny'));
-=======
-app.use(morgan('tiny'))
->>>>>>> mysql
 
 const PORT = 8080;
 
