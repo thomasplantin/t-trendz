@@ -4,11 +4,20 @@ const app = express();
 const morgan = require('morgan');
 const mysql = require('mysql');
 
+<<<<<<< HEAD
 app.use(morgan('tiny'));
+=======
+app.use(morgan('tiny'))
+>>>>>>> mysql
 
 const PORT = 8080;
 
 app.use(express.static(path.join(__dirname, '/public')));
+
+// Import private vars from JSON
+let config = require('./private/config.json');
+
+console.log(config.credentials.GOOGLE_DB_IP);
 
 app.get('/', (req, res) => {
   // Returns the root page of the 
@@ -24,13 +33,13 @@ app.get('/products/:category', (req, res) => {
   console.log('Fetching products from category: ' + productCategory);
 
   const connection = mysql.createConnection( {
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 't_trendz_db'
+    host: config.credentials.GOOGLE_DB_IP,
+    user: config.credentials.GOOGLE_DB_USER,
+    password: config.credentials.GOOGLE_DB_PASS,
+    database: config.credentials.GOOGLE_DB_NAME
   });
 
-  const queryString = 'SELECT * FROM Products WHERE category = ?';
+  const queryString = 'SELECT * FROM products WHERE category = ?';
   connection.query(queryString, [productCategory], (err, rows, fields) => {
     if(err) {
       console.log('Failed to query product - ERROR: ' + err);
