@@ -48,18 +48,6 @@ app.get('/products/:category', (req, res) => {
 
 });
 
-// app.get('/bracelets', (req, res) => {
-//   res.sendFile(__dirname + '/public/jewelry/bracelets.html');
-// });
-
-// app.get('/necklaces', (req, res) => {
-//   res.sendFile(__dirname + '/public/jewelry/necklaces.html');
-// });
-
-// app.get('/earrings', (req, res) => {
-//   res.sendFile(__dirname + '/public/jewelry/earrings.html');
-// });
-
 app.listen(PORT, () => {
     console.log('[INFO] Listening on port ' + PORT + '...');
 });
