@@ -1,13 +1,17 @@
 const express = require('express');
 var path = require('path');
-const app = express();
 const morgan = require('morgan');
-const mysql = require('mysql');
+const ejs = require('ejs');
 
 // Import constants from config.js
 const {
   PORT,
 } = require('./config.js');
+
+const app = express();
+
+// EJS
+app.set('view engine', 'ejs');
 
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public')));
@@ -19,8 +23,8 @@ app.get('/', (req, res) => {
 
 // Import my routes
 const routerDB = require('./routes/database.js');
-app.use(routerDB);
 const routerMulter = require('./routes/multer.js');
+app.use(routerDB);
 app.use(routerMulter);
 
 app.listen(PORT, () => {
