@@ -10,7 +10,10 @@ const {
   GOOGLE_DB_HOST,
   GOOGLE_DB_USER,
   GOOGLE_DB_PASS,
-  GOOGLE_DB_NAME
+  GOOGLE_DB_NAME,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET
 } = require('./config.js');
 
 app.use(morgan('tiny'));
