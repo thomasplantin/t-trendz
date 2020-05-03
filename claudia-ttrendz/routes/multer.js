@@ -39,24 +39,24 @@ function checkFileType(file, cb) {
   }
 }
 
-router.get('/image-upload', (req, res) => {
-  res.render('image_upload.ejs');
+router.get('/admin', (req, res) => {
+  res.render('verify_admin.ejs');
 });
 
 router.post('/upload', (req, res)=> {
   upload(req, res, (err) => {
     if(err) {
-      res.render('image_upload.ejs', {
+      res.render('verify_admin.ejs', {
         msg: err
       });
     }
     else {
       if(req.file == undefined) {
-        res.render('image_upload.ejs', {
+        res.render('verify_admin.ejs', {
           msg: 'Error: No file selected!'
         });
       } else {
-        res.render('image_upload.ejs', {
+        res.render('verify_admin.ejs', {
           msg: 'File uploaded!',
           file: `uploads/${req.file.filename}`
         })
