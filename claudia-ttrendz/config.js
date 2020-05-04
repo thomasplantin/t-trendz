@@ -11,5 +11,6 @@ module.exports = {
   CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
   ADMIN_USER: process.env.ADMIN_USER,
-  ADMIN_PASS: process.env.ADMIN_PASS
+  ADMIN_PASS: process.env.ADMIN_PASS,
+  ADMIN_SALT: process.env.ADMIN_SALT
 };

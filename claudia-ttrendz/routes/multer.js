@@ -3,13 +3,15 @@ const multer = require('multer');
 const ejs = require('ejs');
 const path = require('path');
 const pbkdf2 = require('pbkdf2');
+const crypto = require('crypto');
 
 const router = express.Router();
 
 // const options = {root: path.join(__dirname, '../views')};
 const {
   ADMIN_USER,
-  ADMIN_PASS
+  ADMIN_PASS,
+  ADMIN_SALT
 } = require('./../config.js');
 
 router.use((req, res, next) => {
@@ -17,7 +19,11 @@ router.use((req, res, next) => {
   // parse login and password from headers
   const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
   var [login, password] = Buffer.from(b64auth, 'base64').toString().split(':');
-  if (login && password && login === auth.login && password === auth.password) {
+  // Get salt and hash the input attempt
+  const salt = Buffer.from(ADMIN_SALT);
+  password = String(password);
+  const hashedInput = pbkdf2.pbkdf2Sync(password, salt, 1000000, 32, 'sha512').toString('hex');
+  if (login && password && login === auth.login && hashedInput === auth.password) {
     // Access granted...
     return next();
   }
