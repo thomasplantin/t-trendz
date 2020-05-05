@@ -13,6 +13,7 @@ const {
   ADMIN_SALT
 } = require('./../config.js');
 
+// Password protection
 router.use((req, res, next) => {
   const auth = {login: ADMIN_USER, password: ADMIN_PASS}; // change this
   // parse login and password from headers
@@ -33,7 +34,7 @@ router.use((req, res, next) => {
 
 // Set storage engine
 const storage = multer.diskStorage({
-  destination: './public/uploads',
+  destination: './public/uploads/images',
   filename: function(req, file, cb) {
     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
   }
@@ -63,26 +64,46 @@ function checkFileType(file, cb) {
   }
 }
 
-router.get('/admin/upload', (req, res) => {
-  res.render('verify_admin.ejs');
+// Admin panel GET and POST
+router.get('/admin', (req, res) => {
+  res.render('admin_panel.ejs');
+});
+router.post('/admin', (req, res) => {
+  res.render('admin_panel.ejs');
+});
+
+// Admin upload product GET and POST
+router.get('/admin/upload-product', (req, res) => {
+  res.render('add_product.ejs');
+});
+router.post('/admin/upload-product', (req, res) => {
+  res.render('add_product.ejs');
+});
+
+// Admin remove product GET and POST
+router.get('/admin/remove-product', (req, res) => {
+  res.render('remove_product.ejs');
+});
+router.post('/admin/remove-product', (req, res) => {
+  res.render('remove_product.ejs');
 });
 
 router.post('/upload', (req, res)=> {
   upload(req, res, (err) => {
     if(err) {
-      res.render('verify_admin.ejs', {
+      res.render('add_product.ejs', {
         msg: err
       });
     }
     else {
       if(req.file == undefined) {
-        res.render('verify_admin.ejs', {
+        res.render('add_product.ejs', {
           msg: 'Error: No file selected!'
         });
       } else {
-        res.render('verify_admin.ejs', {
+        res.render('add_product.ejs', {
           msg: 'File uploaded!',
-          file: `uploads/${req.file.filename}`
+          file: `uploads/images/${req.file.filename}`
         })
       }
     }

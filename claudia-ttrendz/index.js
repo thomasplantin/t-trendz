@@ -10,11 +10,12 @@ const {
 
 const app = express();
 
-// EJS
-app.set('view engine', 'ejs');
-
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, '/public')));
+
+// EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/public/views')); // Places views in static
 
 app.get('/', (req, res) => {
   // Returns the root page of the project

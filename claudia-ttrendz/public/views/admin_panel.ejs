@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/admin_styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <title>t-trendz - Admin Panel</title>
+</head>
+<body>
+  <h1>t-trendz -- Admin Panel</h1>
+  <div class="container">
+    <table>
+      <tr>
+        <td>
+          <form class="admin-table" action="/admin/upload-product" method="POST">
+            <button type="submit" class="btn">Add Product</button>
+          </form>
+        </td>
+        <td>
+          <form class="admin-table" action="/admin/remove-product" method="POST">
+            <button type="submit" class="btn">Remove Product</button>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
