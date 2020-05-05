@@ -3,7 +3,6 @@ const multer = require('multer');
 const ejs = require('ejs');
 const path = require('path');
 const pbkdf2 = require('pbkdf2');
-const crypto = require('crypto');
 
 const router = express.Router();
 
@@ -64,7 +63,7 @@ function checkFileType(file, cb) {
   }
 }
 
-router.get('/admin', (req, res) => {
+router.get('/admin/upload', (req, res) => {
   res.render('verify_admin.ejs');
 });
 
